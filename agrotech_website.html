@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriTool Hub - Affordable Agricultural Tools for Farmers</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f4f7f6;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background-color: #023020;
+            color: white;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 1.5rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #a3e4d7;
+        }
+
+        /* Hero section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://via.placeholder.com/1920x600?text=Farm+Landscape');
+            background-color: #FAF9F6;
+            background-size: cover;
+            background-blend-mode: overlay;
+            color: black; /* Changed from white to black */
+            text-align: center;
+            padding: 6rem 2rem;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Services section */
+        .services {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .services h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            color: #023020;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-card-content {
+            padding: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .service-card p {
+            margin-bottom: 1rem;
+            color: #666;
+        }
+
+        .service-card .price {
+            font-weight: bold;
+            color: #023020;
+            margin-bottom: 1rem;
+        }
+
+        .service-card button {
+            background-color: #023020;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .service-card button:hover {
+            background-color: #051e17;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+        }
+
+        .modal-content .close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #aaa;
+        }
+
+        .modal-content h2 {
+            margin-bottom: 1rem;
+        }
+
+        .modal-content form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modal-content label {
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .modal-content input,
+        .modal-content select {
+            margin-bottom: 1rem;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .modal-content button {
+            background-color: #023020;
+            color: white;
+            border: none;
+            padding: 0.75rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .modal-content button:hover {
+            background-color: #051e17;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #023020;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            header {
+                flex-direction: column;
+            }
+
+            nav ul {
+                margin-top: 1rem;
+            }
+
+            nav ul li {
+                margin: 0 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>AgriTool Hub</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <h2>Empowering Farmers with Affordable Tools</h2>
+        <p>We provide easy access to reliable agricultural tools at low costs, helping you boost productivity and adopt modern farming practices. Simple, affordable, and farmer-friendly.</p>
+    </section>
+
+    <section id="services" class="services">
+        <h2>Our Services</h2>
+        <div class="service-grid">
+            <div class="service-card">
+                <div class="service-card-content">
+                    <h3>Tractor Rental</h3>
+                    <p>High-quality tractors for plowing and heavy-duty tasks. Available for daily or weekly rental.</p>
+                    <div class="price">$50/day</div>
+                    <button onclick="openModal('Tractor Rental')">Book Now</button>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-card-content">
+                    <h3>Irrigation System</h3>
+                    <p>Efficient drip irrigation kits to save water and improve crop yield.</p>
+                    <div class="price">$30/week</div>
+                    <button onclick="openModal('Irrigation System')">Book Now</button>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-card-content">
+                    <h3>Seed Drill Machine</h3>
+                    <p>Precision seeding tools for uniform planting and better germination.</p>
+                    <div class="price">$40/day</div>
+                    <button onclick="openModal('Seed Drill Machine')">Book Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="bookingModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Book <span id="serviceName"></span></h2>
+            <form id="bookingForm">
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" required>
+
+                <label for="date">Booking Date:</label>
+                <input type="date" id="date" required>
+
+                <label for="duration">Duration:</label>
+                <select id="duration" required>
+                    <option value="">Select Duration</option>
+                    <option value="1 day">1 Day</option>
+                    <option value="1 week">1 Week</option>
+                    <option value="Custom">Custom</option>
+                </select>
+
+                <button type="submit">Submit Booking</button>
+            </form>
+        </div>
+    </div>
+
+    <footer id="contact">
+        <p>&copy; 2025 AgriTool Hub. All rights reserved. Contact us at support@agritoolhub.com</p>
+    </footer>
+
+    <script>
+        const modal = document.getElementById('bookingModal');
+        const serviceNameSpan = document.getElementById('serviceName');
+        const bookingForm = document.getElementById('bookingForm');
+
+        function openModal(serviceName) {
+            serviceNameSpan.textContent = serviceName;
+            modal.style.display = 'flex';
+        }
+
+        function closeModal() {
+            modal.style.display = 'none';
+            bookingForm.reset();
+        }
+
+        bookingForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Booking submitted successfully! Details: ' + 
+                  '\nName: ' + document.getElementById('name').value +
+                  '\nEmail: ' + document.getElementById('email').value +
+                  '\nDate: ' + document.getElementById('date').value +
+                  '\nDuration: ' + document.getElementById('duration').value +
+                  '\nService: ' + serviceNameSpan.textContent);
+            closeModal();
+        });
+
+        window.onclick = function(event) {
+            if (event.target === modal) {
+                closeModal();
+            }
+        };
+    </script>
+</body>
+</html>
